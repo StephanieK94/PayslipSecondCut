@@ -24,7 +24,7 @@ namespace PayslipTestLibrary
         [InlineData(18000,0)]
         [InlineData(20000,342)]
         [InlineData(80000,17547)]
-        public void GivenCaclulator_WhenGivenSalary_ReturnIncomeTaxAmount(decimal income, decimal tax)
+        public void GivenCalculator_WhenGivenSalary_ReturnIncomeTaxAmount(decimal income, decimal tax)
         {
             var calculator = new NZTaxCalculator();
 
@@ -34,13 +34,23 @@ namespace PayslipTestLibrary
         }
 
         [Fact]
-        public void GivenCaclulator_WhenGivenIncomeAndTax_ReturnNetIncomeTotal ()
+        public void GivenCalculator_WhenGivenIncomeAndTax_ReturnNetIncomeTotal ()
         {
             var calculator = new NZTaxCalculator();
 
             var actual = calculator.CalculateMonthlyNetIncome( 5004,11063 );
 
             Assert.Equal( 4082m , actual );
+        }
+
+        [Fact]
+        public void GivenCalculator_WhenGivenMonthlyIncome_ReturnSuperTaxTotal ()
+        {
+            var calculator = new NZTaxCalculator();
+
+            var actual = calculator.CalculateSuperTax( 5004m , 0.09m);
+
+            Assert.Equal( 450m , actual );
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Generator
 {
-    interface ICalculator
+    public interface ICalculator
     {
         decimal CalculateMonthlyGrossIncome ( decimal yearlySalary );
         decimal CalculateIncomeTax ( decimal yearlySalary );
         decimal CalculateMonthlyNetIncome ( decimal monthlyIncome, decimal netTaxAmount );
+        decimal CalculateSuperTax ( decimal monthlyIncome, decimal superRate );
     }
 }

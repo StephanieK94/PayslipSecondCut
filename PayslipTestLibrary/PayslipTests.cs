@@ -8,7 +8,7 @@ namespace PayslipTestLibrary
     public class PayslipTests
     {
         [Fact]
-        public void Test1()
+        public void GivenEmployeeAndCalculator_WhenPlayslipCalled_ReturnsGrossIncome()
         {
 
         }

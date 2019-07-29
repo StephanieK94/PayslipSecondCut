@@ -38,5 +38,10 @@ namespace Generator
         {
             return Math.Round( monthlyIncome - (netTax/12) );
         }
+
+        public decimal CalculateSuperTax ( decimal monthlyIncome, decimal superRate )
+        {
+            return Math.Round( monthlyIncome * superRate );
+        }
     }
 }
