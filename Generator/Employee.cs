@@ -46,6 +46,16 @@ namespace Generator
             string[] employeeInformation = emp.Split( ',' );
 
             this.FirstName = employeeInformation[0];
+            this.LastName = employeeInformation[1];
+            this.Salary = Convert.ToDecimal(employeeInformation[2]);
+            this.SuperRate = ConvertSuperRate(employeeInformation[3]);
+            this.PayPeriod = employeeInformation[4];
+        }
+
+        private decimal ConvertSuperRate(string rate)
+        {
+            var percent = Convert.ToDecimal( rate.TrimEnd( '%' ) );
+            return percent / 100;
         }
     }
 }
