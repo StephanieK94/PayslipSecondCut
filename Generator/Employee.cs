@@ -41,9 +41,37 @@ namespace Generator
             set { superRate = value; }
         }
 
-        public void GetEmployee( string emp )
+        private decimal monthlyGrossIncome;
+        public decimal MonthlyGrossIncome
         {
-            string[] employeeInformation = emp.Split( ',' );
+            get { return monthlyGrossIncome; }
+            set { monthlyGrossIncome = value; }
+        }
+
+        private decimal incomeTax;
+        public decimal YearlyIncomeTax
+        {
+            get { return incomeTax; }
+            set { incomeTax = value; }
+        }
+
+        private decimal monthlyNetIncome;
+        public decimal MonthlyNetIncome
+        {
+            get { return monthlyNetIncome; }
+            set { monthlyNetIncome = value; }
+        }
+
+        private decimal super;
+        public decimal SuperAmount
+        {
+            get { return super; }
+            set { super = value; }
+        }
+
+        public void GetEmployee( string empCsv )
+        {
+            string[] employeeInformation = empCsv.Split( ',' );
 
             this.FirstName = employeeInformation[0];
             this.LastName = employeeInformation[1];
@@ -52,6 +80,13 @@ namespace Generator
             this.PayPeriod = employeeInformation[4];
         }
 
+        public void GetEmployeeTaxInformation(ICalculator calculator)
+        {
+            this.MonthlyGrossIncome = calculator.CalculateMonthlyGrossIncome( this.Salary );
+            this.YearlyIncomeTax = calculator.CalculateIncomeTax( Salary );
+            this.MonthlyNetIncome = calculator.CalculateMonthlyNetIncome( this.MonthlyGrossIncome , this.YearlyIncomeTax );
+            this.SuperAmount = calculator.CalculateSuperTax( this.MonthlyGrossIncome , this.SuperRate );
+        }
         private decimal ConvertSuperRate(string rate)
         {
             var percent = Convert.ToDecimal( rate.TrimEnd( '%' ) );
