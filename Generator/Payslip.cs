@@ -36,12 +36,10 @@ namespace Generator
 
         public void PrintPayslip(string path)
         {
-            using ( StreamWriter sw = new StreamWriter( path ) )
+            using ( StreamWriter sw = new StreamWriter( path , append: true ) )
             {
-                Console.WriteLine( string.Join(',', this.PayslipInformation) );
+                sw.WriteLine( string.Join( ',', this.PayslipInformation ) );
             }
         }
-
-        
     }
 }
