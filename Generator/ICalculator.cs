@@ -6,6 +6,8 @@ namespace Generator
 {
     interface ICalculator
     {
-        decimal CalculateGrossIncome ( decimal salary );
+        decimal CalculateMonthlyGrossIncome ( decimal yearlySalary );
+        decimal CalculateIncomeTax ( decimal yearlySalary );
+        decimal CalculateMonthlyNetIncome ( decimal monthlyIncome, decimal netTaxAmount );
     }
 }
