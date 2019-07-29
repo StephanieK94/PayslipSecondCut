@@ -8,7 +8,7 @@ namespace Generator
     {
         public decimal CalculateGrossIncome ( decimal salary )
         {
-            return salary;
+            return Math.Round(salary/12);
         }
     }
 }
