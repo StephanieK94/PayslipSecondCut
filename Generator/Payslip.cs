@@ -7,25 +7,38 @@ namespace Generator
 {
     public class Payslip
     {
-        private Employee _employee;
         private string fullName;
-        public string FullName { get { return fullName; } set { fullName = value; } }
-        
+        public string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
 
+        private string[] payslipInformation;
+        public string[] PayslipInformation
+        {
+            get { return payslipInformation; }
+            set { payslipInformation = value; }
+        }
 
         public Payslip (Employee employee)
         {
-            _employee = employee;
-            FullName = new string( employee.FirstName + ' ' + employee.LastName );
+            this.FullName = new string( employee.FirstName + ' ' + employee.LastName );
+
+            this.PayslipInformation = new string[7];
+            this.PayslipInformation[0] = FullName;
+            this.PayslipInformation[1] = employee.PayPeriod;
+            this.PayslipInformation[2] = employee.MonthlyGrossIncome.ToString();
+            this.PayslipInformation[3] = employee.MonthlyIncomeTax.ToString();
+            this.PayslipInformation[4] = employee.MonthlyNetIncome.ToString();
+            this.PayslipInformation[5] = employee.SuperAmount.ToString();
         }
 
         public void PrintPayslip(string path)
         {
-            
-
             using ( StreamWriter sw = new StreamWriter( path ) )
             {
-                Console.WriteLine( String.Join(',', _employee) );
+                Console.WriteLine( string.Join(',', this.PayslipInformation) );
             }
         }
 

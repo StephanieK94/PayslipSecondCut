@@ -10,7 +10,7 @@ namespace Generator
             return 0;
         }
 
-        public decimal CalculateIncomeTax ( decimal yearlySalary )
+        public decimal CalculateMonthlyIncomeTax ( decimal yearlySalary )
         {
             decimal monthlyIncomeTax = 0;
 
@@ -31,12 +31,12 @@ namespace Generator
             {
                 monthlyIncomeTax = 54547 + ( ( yearlySalary - 180000 ) * 0.45m );
             }
-            return Math.Round( monthlyIncomeTax );
+            return Math.Round( monthlyIncomeTax /12 );
         }
 
         public decimal CalculateMonthlyNetIncome ( decimal monthlyIncome, decimal netTax )
         {
-            return Math.Round( monthlyIncome - (netTax/12) );
+            return Math.Round( monthlyIncome - netTax );
         }
 
         public decimal CalculateSuperTax ( decimal monthlyIncome, decimal superRate )

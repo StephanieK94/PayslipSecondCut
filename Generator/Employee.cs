@@ -49,7 +49,7 @@ namespace Generator
         }
 
         private decimal incomeTax;
-        public decimal YearlyIncomeTax
+        public decimal MonthlyIncomeTax
         {
             get { return incomeTax; }
             set { incomeTax = value; }
@@ -83,8 +83,8 @@ namespace Generator
         public void GetEmployeeTaxInformation(ICalculator calculator)
         {
             this.MonthlyGrossIncome = calculator.CalculateMonthlyGrossIncome( this.Salary );
-            this.YearlyIncomeTax = calculator.CalculateIncomeTax( Salary );
-            this.MonthlyNetIncome = calculator.CalculateMonthlyNetIncome( this.MonthlyGrossIncome , this.YearlyIncomeTax );
+            this.MonthlyIncomeTax = calculator.CalculateMonthlyIncomeTax( Salary );
+            this.MonthlyNetIncome = calculator.CalculateMonthlyNetIncome( this.MonthlyGrossIncome , this.MonthlyIncomeTax );
             this.SuperAmount = calculator.CalculateSuperTax( this.MonthlyGrossIncome , this.SuperRate );
         }
         private decimal ConvertSuperRate(string rate)

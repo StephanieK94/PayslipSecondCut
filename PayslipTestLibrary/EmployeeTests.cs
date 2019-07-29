@@ -41,7 +41,7 @@ namespace PayslipTestLibrary
             employee.GetEmployeeTaxInformation( nzTaxCalculator);
 
             Assert.Equal( 5004m, employee.MonthlyGrossIncome );
-            Assert.Equal(11063m , employee.YearlyIncomeTax );
+            Assert.Equal(922m , employee.MonthlyIncomeTax );
             Assert.Equal(  4082m, employee.MonthlyNetIncome );
             Assert.Equal( 450m, employee.SuperAmount );
         }

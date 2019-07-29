@@ -22,13 +22,13 @@ namespace PayslipTestLibrary
 
         [Theory]
         [InlineData(18000,0)]
-        [InlineData(20000,342)]
-        [InlineData(80000,17547)]
+        [InlineData(20000,28)]
+        [InlineData(80000,1462)]
         public void GivenCalculator_WhenGivenSalary_ReturnIncomeTaxAmount(decimal income, decimal tax)
         {
             var calculator = new NZTaxCalculator();
 
-            var actual = calculator.CalculateIncomeTax( income );
+            var actual = calculator.CalculateMonthlyIncomeTax( income );
 
             Assert.Equal( tax , actual );
         }
@@ -38,7 +38,7 @@ namespace PayslipTestLibrary
         {
             var calculator = new NZTaxCalculator();
 
-            var actual = calculator.CalculateMonthlyNetIncome( 5004,11063 );
+            var actual = calculator.CalculateMonthlyNetIncome( 5004,922 );
 
             Assert.Equal( 4082m , actual );
         }
